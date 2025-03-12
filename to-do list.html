@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3); /* Gradient background */
+        }
+
+        /* Container for the to-do list */
+        .todo-container {
+            background: #fff; /* White background */
+            padding: 20px;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Shadow effect */
+            width: 350px;
+            text-align: center;
+        }
+
+        /* Heading styling */
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Input field styling */
+        input {
+            width: 70%; /* Adjust width */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none; /* Remove default outline */
+        }
+
+        /* Button styling */
+        button {
+            padding: 10px 15px;
+            background: #007bff; /* Blue background */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* List container */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Individual task item */
+        li {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* Styling for task details */
+        .task-details {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        /* Serial number styling */
+        .serial-number {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #ff5722; /* Orange color */
+        }
+
+        /* Task text styling */
+        .task-text {
+            cursor: pointer; /* Pointer effect on text */
+            margin-right: 10px;
+        }
+
+        /* Checkbox styling */
+        .checkbox {
+            cursor: pointer;
+            margin-left: 200px;
+        }
+
+        /* Delete button styling */
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+
+        /* Delete button hover effect */
+        .delete-btn:hover {
+            background: darkred;
+        }
+
+        /* Styling for completed tasks */
+        .completed {
+            text-decoration: line-through;
+            color: #888; /* Gray color for completed tasks */
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <!-- Input field to add new tasks -->
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <!-- Button to add tasks -->
+        <button onclick="addTask()">Add</button>
+        <!-- Unordered list to display tasks -->
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        let taskCount = 1; // Keeps track of task numbers
+
+        // Function to add a new task
+        function addTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskList = document.getElementById("taskList");
+            
+            // Prevent adding empty tasks
+            if (taskInput.value.trim() === "") {
+                alert("Please enter a task");
+                return;
+            }
+            
+            // Create a new list item
+            let li = document.createElement("li");
+            li.innerHTML = `<span class='serial-number'>${taskCount}.</span>
+                            <div class='task-details'>
+                                <span class='task-text'>${taskInput.value}</span>
+                                <input type='checkbox' class='checkbox' onclick='toggleTask(this)'>
+                            </div>
+                            <button class='delete-btn' onclick='removeTask(this)'>X</button>`;
+            
+            // Append new task to the list
+            taskList.appendChild(li);
+            taskInput.value = ""; // Clear input field after adding
+            taskCount++; // Increment task number
+        }
+        
+        // Function to remove a task
+        function removeTask(button) {
+            button.parentElement.remove();
+        }
+        
+        // Function to toggle task completion
+        function toggleTask(checkbox) {
+            let taskText = checkbox.previousElementSibling;
+            if (checkbox.checked) {
+                taskText.classList.add("completed"); // Apply strikethrough style
+            } else {
+                taskText.classList.remove("completed"); // Remove strikethrough
+            }
+        }
+    </script>
+</body>
+</html>

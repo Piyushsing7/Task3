@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <style>
+        /* Reset margin, padding, and apply box-sizing for all elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Set default font */
+        }
+        /* Center the profile card vertically and horizontally */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e3f2fd; /* Light blue background */
+        }
+        /* Profile card styling */
+        .profile-card {
+            background: #fff; /* White background */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Soft shadow effect */
+            text-align: center; /* Center text alignment */
+            transition: transform 0.3s ease; /* Smooth scaling effect */
+            width: 300px; /* Fixed width */
+        }
+        /* Slightly enlarge the card when hovered */
+        .profile-card:hover {
+            transform: scale(1.05);
+        }
+        /* Profile picture styling */
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Circular image */
+            border: 3px solid #007bff; /* Blue border */
+        }
+        /* Styling for the name */
+        .profile-card h2 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+        /* Styling for job title and description */
+        .profile-card p {
+            color: #555; /* Slightly gray text */
+            font-size: 1rem;
+        }
+        /* Social media icons container */
+        .social-icons {
+            margin-top: 15px;
+        }
+        /* Social media icons styling */
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #007bff; /* Blue icons */
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        /* Darker blue color when hovered */
+        .social-icons a:hover {
+            color: #0056b3;
+        }
+    </style>
+    <!-- FontAwesome icons for social media links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Profile card container -->
+    <div class="profile-card">
+        <!-- Profile picture -->
+        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture">
+        <!-- User name -->
+        <h2>John Doe</h2>
+        <!-- Job title -->
+        <p>Frontend Developer</p>
+        <!-- Short bio -->
+        <p>Passionate about creating modern and user-friendly web applications.</p>
+        <!-- Social media links -->
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</body>
+</html>
